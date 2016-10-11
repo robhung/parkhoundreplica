@@ -1,0 +1,2 @@
+json.extract! space, :id, :title, :description, :user_id, :street, :suburb, :postcode, :country, :latitude, :longitude, :bond, :price_day, :price_week, :price_month, :available_start_time, :available_end_time, :available_monday, :available_tuesday, :available_wednesday, :available_thursday, :available_friday, :available_saturday, :available_sunday, :created_at, :updated_at
+json.url space_url(space, format: :json)

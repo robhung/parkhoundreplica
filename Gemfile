@@ -16,11 +16,14 @@ gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+############## CUSTOM GEMS ##############
+
 # Use bootstrap for stylesheets
 gem 'bootstrap-sass'
 # Use devise for user management
 gem 'devise'
 
+############## CUSTOM GEMS END ##############
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

@@ -1,0 +1,49 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyText
+  description: MyText
+  user: one
+  street: MyText
+  suburb: MyText
+  postcode: MyText
+  country: MyText
+  latitude: 1.5
+  longitude: 1.5
+  bond: 1.5
+  price_day: 1.5
+  price_week: 1.5
+  price_month: 1.5
+  available_start_time: 2016-10-06 13:01:37
+  available_end_time: 2016-10-06 13:01:37
+  available_monday: false
+  available_tuesday: false
+  available_wednesday: false
+  available_thursday: false
+  available_friday: false
+  available_saturday: false
+  available_sunday: false
+
+two:
+  title: MyText
+  description: MyText
+  user: two
+  street: MyText
+  suburb: MyText
+  postcode: MyText
+  country: MyText
+  latitude: 1.5
+  longitude: 1.5
+  bond: 1.5
+  price_day: 1.5
+  price_week: 1.5
+  price_month: 1.5
+  available_start_time: 2016-10-06 13:01:37
+  available_end_time: 2016-10-06 13:01:37
+  available_monday: false
+  available_tuesday: false
+  available_wednesday: false
+  available_thursday: false
+  available_friday: false
+  available_saturday: false
+  available_sunday: false

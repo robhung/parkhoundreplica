@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Spaces</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>User</th>
+      <th>Street</th>
+      <th>Suburb</th>
+      <th>Postcode</th>
+      <th>Country</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Bond</th>
+      <th>Price day</th>
+      <th>Price week</th>
+      <th>Price month</th>
+      <th>Available start time</th>
+      <th>Available end time</th>
+      <th>Available monday</th>
+      <th>Available tuesday</th>
+      <th>Available wednesday</th>
+      <th>Available thursday</th>
+      <th>Available friday</th>
+      <th>Available saturday</th>
+      <th>Available sunday</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @spaces.each do |space| %>
+      <tr>
+        <td><%= space.title %></td>
+        <td><%= space.description %></td>
+        <td><%= space.user %></td>
+        <td><%= space.street %></td>
+        <td><%= space.suburb %></td>
+        <td><%= space.postcode %></td>
+        <td><%= space.country %></td>
+        <td><%= space.latitude %></td>
+        <td><%= space.longitude %></td>
+        <td><%= space.bond %></td>
+        <td><%= space.price_day %></td>
+        <td><%= space.price_week %></td>
+        <td><%= space.price_month %></td>
+        <td><%= space.available_start_time %></td>
+        <td><%= space.available_end_time %></td>
+        <td><%= space.available_monday %></td>
+        <td><%= space.available_tuesday %></td>
+        <td><%= space.available_wednesday %></td>
+        <td><%= space.available_thursday %></td>
+        <td><%= space.available_friday %></td>
+        <td><%= space.available_saturday %></td>
+        <td><%= space.available_sunday %></td>
+        <td><%= link_to 'Show', space %></td>
+        <td><%= link_to 'Edit', edit_space_path(space) %></td>
+        <td><%= link_to 'Destroy', space, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Space', new_space_path %>
