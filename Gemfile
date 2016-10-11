@@ -24,6 +24,8 @@ gem 'bootstrap-sass'
 gem 'devise'
 # Use omniauth-facebook for Facebook login
 gem 'omniauth-facebook'
+# Use carrierwave for image upload
+gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
 
 ############## CUSTOM GEMS END ##############
 

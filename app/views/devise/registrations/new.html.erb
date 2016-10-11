@@ -19,6 +19,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :photo %>
+    <%= f.file_field :photo, as: :file %>
+  </div>
+
+  <div class="field">
     <%= f.label :phone %><br />
     <%= f.text_field :phone %>
   </div>
