@@ -22,6 +22,8 @@ gem 'coffee-rails', '~> 4.2'
 gem 'bootstrap-sass'
 # Use devise for user management
 gem 'devise'
+# Use omniauth-facebook for Facebook login
+gem 'omniauth-facebook'
 
 ############## CUSTOM GEMS END ##############
 
