@@ -21,7 +21,7 @@ Devise.setup do |config|
   # config.parent_mailer = 'ActionMailer::Base'
 
   # ==> Omniauth Facebook - Declaring Provider
-  config.omniauth :facebook, "183075448800710", "e949d285a693cb68911a4ef2dc33a3c6", scope: 'email, public_profile', info_fields: 'email, image, first_name, last_name', callback_url: "https://localhost:3000/users/auth/facebook/callback"
+  config.omniauth :facebook, "212141012531909", "2598a7413397082432034026a97cc525", scope: 'email, public_profile', info_fields: 'email, first_name, last_name', callback_url: "http://localhost:3000/users/auth/facebook/callback"
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
