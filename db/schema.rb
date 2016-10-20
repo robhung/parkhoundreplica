@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161019013845) do
+ActiveRecord::Schema.define(version: 20161019230710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,30 +34,29 @@ ActiveRecord::Schema.define(version: 20161019013845) do
   end
 
   create_table "spaces", force: :cascade do |t|
-    t.text     "title"
     t.text     "description"
     t.integer  "user_id"
-    t.text     "street"
-    t.text     "suburb"
-    t.text     "postcode"
-    t.text     "country"
     t.float    "latitude"
     t.float    "longitude"
-    t.float    "bond"
     t.float    "price_day"
     t.float    "price_week"
     t.float    "price_month"
     t.time     "available_start_time"
     t.time     "available_end_time"
-    t.boolean  "available_monday"
-    t.boolean  "available_tuesday"
-    t.boolean  "available_wednesday"
-    t.boolean  "available_thursday"
-    t.boolean  "available_friday"
-    t.boolean  "available_saturday"
-    t.boolean  "available_sunday"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "country"
+    t.string   "space_type"
+    t.string   "maximum_entrance_height"
+    t.string   "type_of_access"
+    t.string   "largest_vehicle"
+    t.string   "title"
+    t.string   "street"
+    t.string   "suburb"
+    t.string   "state"
+    t.string   "postcode"
+    t.float    "price_bond"
+    t.string   "available_days"
     t.index ["user_id"], name: "index_spaces_on_user_id", using: :btree
   end
 

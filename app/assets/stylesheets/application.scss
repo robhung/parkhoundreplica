@@ -1,6 +1,7 @@
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "toastr";
 
 .jumbotron {
   background-color: #57BCB4;
@@ -25,4 +26,20 @@
 
 .bg-the-app {
 
+}
+
+.avatar-small {
+  width: 28px;
+}
+
+.avatar-medium {
+  width: 68px;
+}
+
+.avatar-large {
+  width: 108px;
+}
+
+.avatar-full {
+  width: 100%;
 }

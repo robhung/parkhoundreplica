@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  # Devise
+  ######################### Devise #########################
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -7,7 +7,8 @@ class User < ApplicationRecord
   devise  :database_authenticatable, :registerable,
           :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 
-  # Omniauth Facebook
+
+  ######################### OmniAuth Facebook #########################
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -31,16 +32,17 @@ class User < ApplicationRecord
     end
   end
 
-  # Carrierwave
+  ######################### Carrierwave #########################
 
   mount_uploader :photo, PhotoUploader
 
-  # Validation
+  ######################### Validation #########################
 
   validates :first_name, :last_name, presence: true
 
-  # References
+  ######################### References ######################### 
 
-  has_many :spaces
+  has_many :spaces, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
 end

@@ -1,7 +1,7 @@
 
 <!--- ################################################## --->
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-static-top">
   <div class="container-fluid">
 
 <!--- ################################################## --->
@@ -56,11 +56,14 @@
 
         <% if user_signed_in? %>
           <li><%= link_to('Inbox', conversations_path) %></li>
-          <% if current_user.photo_url %>
-            <%= image_tag(current_user.photo, class: "img-thumbnail", width: "50px", height: "50px") %>
-          <% end %>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.first_name %> <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <% if current_user.photo_url %>
+                <%= image_tag current_user.photo, class: "img-circle avatar-small" %>&#160;&#160;&#160;
+              <% end %>
+              <%= current_user.first_name %>
+              <span class="caret"></span>
+            </a>
             <ul class="dropdown-menu">
               <li><a href="#">Dashboard</a></li>
               <li role="separator" class="divider"></li>

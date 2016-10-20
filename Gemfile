@@ -16,7 +16,7 @@ gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-############## CUSTOM GEMS ##############
+######################### CUSTOM GEMS #########################
 
 # Use bootstrap for stylesheets
 gem 'bootstrap-sass'
@@ -26,8 +26,16 @@ gem 'devise'
 gem 'omniauth-facebook'
 # Use carrierwave for image upload
 gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
+# Use simple_form for easier forms
+gem 'simple_form'
+# Use country_select for country in simple_form
+gem 'country_select'
+# Use geocoder for geolocation
+gem 'geocoder'
+# Use toastr-rails for pretty notifications
+gem 'toastr-rails'
 
-############## CUSTOM GEMS END ##############
+######################### CUSTOM GEMS END #########################
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

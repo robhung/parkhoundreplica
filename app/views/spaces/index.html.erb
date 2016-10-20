@@ -2,6 +2,18 @@
 
 <h1>Spaces</h1>
 
+<%= form_tag(spaces_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Parking Spaces" %>
+<%= text_field_tag :radius, params[:radius], placeholder: "How many km's radius?" %>
+<%= submit_tag "Search" %>
+<% end %>
+
+<% if @spaces.present? %>
+  <%= render @spaces %>
+<% else %>
+  <p>There are no parking spaces around <%= params[:search] %> within <%= params[:radius] %> km's.</p>
+<% end %>
+
 <table>
   <thead>
     <tr>

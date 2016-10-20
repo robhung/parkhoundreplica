@@ -1,122 +1,28 @@
-<%= form_for(space) do |f| %>
-  <% if space.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(space.errors.count, "error") %> prohibited this space from being saved:</h2>
+<%= simple_form_for(@space) do |f| %>
+  <%= f.error_notification %>
 
-      <ul>
-      <% space.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_area :title %>
+  <div class="form-inputs">
+      <%= f.input :title %>
+      <%= f.input :description %>
+      <%= f.input :street %>
+      <%= f.input :suburb %>
+      <%= f.input :state, collection: ['NSW', 'QLD', 'VIC', 'WA', 'SA', 'NT', 'TAS'] %>
+      <%= f.input :postcode %>
+      <%= f.input :country, priority: ['Australia','New Zealand']%>
+      <%= f.input :space_type %>
+      <%= f.input :type_of_access %>
+      <%= f.input :maximum_entrance_height %>
+      <%= f.input :largest_vehicle %>
+      <%= f.input :price_day %>
+      <%= f.input :price_week %>
+      <%= f.input :price_month %>
+      <%= f.input :price_bond %>
+      <%= f.input :available_start_time %>
+      <%= f.input :available_end_time %>
+      <%= f.input :available_days %>
   </div>
 
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= f.label :street %>
-    <%= f.text_area :street %>
-  </div>
-
-  <div class="field">
-    <%= f.label :suburb %>
-    <%= f.text_area :suburb %>
-  </div>
-
-  <div class="field">
-    <%= f.label :postcode %>
-    <%= f.text_area :postcode %>
-  </div>
-
-  <div class="field">
-    <%= f.label :country %>
-    <%= f.text_area :country %>
-  </div>
-
-  <div class="field">
-    <%= f.label :latitude %>
-    <%= f.text_field :latitude %>
-  </div>
-
-  <div class="field">
-    <%= f.label :longitude %>
-    <%= f.text_field :longitude %>
-  </div>
-
-  <div class="field">
-    <%= f.label :bond %>
-    <%= f.text_field :bond %>
-  </div>
-
-  <div class="field">
-    <%= f.label :price_day %>
-    <%= f.text_field :price_day %>
-  </div>
-
-  <div class="field">
-    <%= f.label :price_week %>
-    <%= f.text_field :price_week %>
-  </div>
-
-  <div class="field">
-    <%= f.label :price_month %>
-    <%= f.text_field :price_month %>
-  </div>
-
-  <div class="field">
-    <%= f.label :available_start_time %>
-    <%= f.time_select :available_start_time %>
-  </div>
-
-  <div class="field">
-    <%= f.label :available_end_time %>
-    <%= f.time_select :available_end_time %>
-  </div>
-
-  <div class="field">
-    <%= f.label :available_monday %>
-    <%= f.check_box :available_monday %>
-  </div>
-
-  <div class="field">
-    <%= f.label :available_tuesday %>
-    <%= f.check_box :available_tuesday %>
-  </div>
-
-  <div class="field">
-    <%= f.label :available_wednesday %>
-    <%= f.check_box :available_wednesday %>
-  </div>
-
-  <div class="field">
-    <%= f.label :available_thursday %>
-    <%= f.check_box :available_thursday %>
-  </div>
-
-  <div class="field">
-    <%= f.label :available_friday %>
-    <%= f.check_box :available_friday %>
-  </div>
-
-  <div class="field">
-    <%= f.label :available_saturday %>
-    <%= f.check_box :available_saturday %>
-  </div>
-
-  <div class="field">
-    <%= f.label :available_sunday %>
-    <%= f.check_box :available_sunday %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+      <%= f.button :submit %>
   </div>
 <% end %>

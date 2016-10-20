@@ -70,6 +70,6 @@ class SpacesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def space_params
-      params.require(:space).permit(:title, :description, :user_id, :street, :suburb, :postcode, :country, :latitude, :longitude, :bond, :price_day, :price_week, :price_month, :available_start_time, :available_end_time, :available_monday, :available_tuesday, :available_wednesday, :available_thursday, :available_friday, :available_saturday, :available_sunday)
+      params.require(:space).permit(:title, :description, :user_id, :street, :suburb, :state, :postcode, :country, :latitude, :longitude, :space_type, :type_of_access, :maximum_entrance_height, :largest_vehicle, :price_bond, :price_day, :price_week, :price_month, :available_start_time, :available_end_time, :available_days)
     end
 end
