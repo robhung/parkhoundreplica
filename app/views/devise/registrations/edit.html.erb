@@ -20,11 +20,11 @@
       </div>
 
       <div class="form-group">
-        <%= f.label :photo %>
-        <% if current_user.photo_url %>
-          <%= image_tag resource.photo, class: "img-circle avatar-large" %>
+        <%= f.label :avatar %>
+        <% if current_user.avatar_url %>
+          <%= image_tag resource.avatar, class: "img-circle avatar-large" %>
         <% end %>
-        <%= f.file_field :photo, as: :file %>
+        <%= f.file_field :avatar, as: :file %>
       </div>
 
       <div class="form-group">

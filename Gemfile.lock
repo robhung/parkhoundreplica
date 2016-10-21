@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/carrierwaveuploader/carrierwave.git
+  revision: ec850831eeaf0f2f45c002bcec9b90698b78d0d8
+  specs:
+    carrierwave (1.0.0.beta)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -47,10 +56,6 @@ GEM
       sass (>= 3.3.4)
     builder (3.2.2)
     byebug (9.0.6)
-    carrierwave (1.0.0.beta)
-      activemodel (>= 4.0.0)
-      activesupport (>= 4.0.0)
-      mime-types (>= 1.16)
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.2.x)
@@ -91,6 +96,8 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (5.0.5)
+      railties (>= 3.2.16)
     jwt (1.5.6)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -216,13 +223,14 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass
   byebug
-  carrierwave (>= 1.0.0.beta, < 2.0)
+  carrierwave!
   coffee-rails (~> 4.2)
   country_select
   devise
   geocoder
   jbuilder (~> 2.5)
   jquery-rails
+  jquery-ui-rails
   listen (~> 3.0.5)
   omniauth-facebook
   pg (~> 0.18)

@@ -12,6 +12,12 @@
   color: #fff;
 }
 
+.navbar-default .navbar-brand {
+  color: #57BCB4;
+  font-size: 2em;
+  font-weight: 400;
+}
+
 .container-fluid-home {
   padding: 60px 50px;
 }
@@ -42,4 +48,89 @@
 
 .avatar-full {
   width: 100%;
+}
+
+.btn-primary.btn {
+  border: 1px solid #57BCB4;
+  border-radius: 2px;
+  font-weight: bold;
+  background-color: #57BCB4;
+  color: #fff;
+  padding: 10px 25px 10px 25px;
+}
+
+.btn-primary.btn:hover, .btn-primary.btn:focus {
+  border-color: #57BCB4;
+  border-bottom-color: #57BCB4;
+  background-color: #57BCB4;
+  outline:none;
+}
+
+.btn-primary.btn:active {
+  border-color: #57BCB4;
+  background-color: #57BCB4;
+  outline:none;
+}
+
+.btn-default.btn {
+  width: 100%;
+  border-radius: 2px;
+  padding: 10px 0;
+  margin-top: 10px;
+}
+
+.panel-default .panel-heading {
+  color: #565a5c;
+  background-color: #edefed;
+  font-size: 18px;
+  font-weight: 400
+}
+
+.panel-heading.preview {
+  padding: 0;
+}
+
+.row-space-1 {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.row-space-2 {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.row-space-3 {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.description {
+  color: #575757;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 25px;
+}
+
+#map {
+  height: 400px;
+  width: 100%;
+}
+
+.booking-table td {
+  width: 100%;
+  border: 1px solid #dce0e0;
+  padding: 10px;
+}
+
+.wide {
+  width: 100%;
+}
+
+.price_tag {
+  background-color: #606567;
+  color: #fff;
+  font-size: 20px;
+  padding: 10px;
+  margin-bottom: 10px;
 }

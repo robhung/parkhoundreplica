@@ -4,7 +4,11 @@ class SpacesController < ApplicationController
   # GET /spaces
   # GET /spaces.json
   def index
-    @spaces = Space.all
+    if params[:search] && params[:radius]
+      @spaces = Space.near(params[:search], params[:radius], :units => :km)
+    else
+      @spaces = Space.all.order('created_at')
+    end
   end
 
   # GET /spaces/1
@@ -70,6 +74,6 @@ class SpacesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def space_params
-      params.require(:space).permit(:title, :description, :user_id, :street, :suburb, :state, :postcode, :country, :latitude, :longitude, :space_type, :type_of_access, :maximum_entrance_height, :largest_vehicle, :price_bond, :price_day, :price_week, :price_month, :available_start_time, :available_end_time, :available_days)
+      params.require(:space).permit(:title, :description, :user_id, {photos: []}, :street, :suburb, :state, :postcode, :country, :latitude, :longitude, :space_type, :type_of_access, :maximum_entrance_height, :largest_vehicle, :price)
     end
 end

@@ -1,28 +1,25 @@
 <%= simple_form_for(@space) do |f| %>
-  <%= f.error_notification %>
 
   <div class="form-inputs">
-      <%= f.input :title %>
-      <%= f.input :description %>
-      <%= f.input :street %>
-      <%= f.input :suburb %>
-      <%= f.input :state, collection: ['NSW', 'QLD', 'VIC', 'WA', 'SA', 'NT', 'TAS'] %>
-      <%= f.input :postcode %>
-      <%= f.input :country, priority: ['Australia','New Zealand']%>
-      <%= f.input :space_type %>
-      <%= f.input :type_of_access %>
-      <%= f.input :maximum_entrance_height %>
-      <%= f.input :largest_vehicle %>
-      <%= f.input :price_day %>
-      <%= f.input :price_week %>
-      <%= f.input :price_month %>
-      <%= f.input :price_bond %>
-      <%= f.input :available_start_time %>
-      <%= f.input :available_end_time %>
-      <%= f.input :available_days %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :street %>
+    <%= f.input :suburb %>
+    <%= f.input :state, collection: ['NSW', 'QLD', 'VIC', 'WA', 'SA', 'NT', 'TAS'] %>
+    <%= f.input :postcode %>
+    <%= f.input :country, priority: ['Australia','New Zealand']%>
+    <%= f.input :space_type %>
+    <%= f.input :type_of_access %>
+    <%= f.input :maximum_entrance_height %>
+    <%= f.input :largest_vehicle %>
+    <%= f.input :price %>
+    <%= f.input :available_start_time %>
+    <%= f.input :available_end_time %>
+    <%= f.input :available_days %>
+    <%= f.input :photos, as: :file, input_html: { multiple: 'multiple' } %>
   </div>
 
   <div class="form-actions">
-      <%= f.button :submit %>
+      <%= f.button :submit, class: "btn-primary" %>
   </div>
 <% end %>

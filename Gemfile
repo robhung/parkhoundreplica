@@ -25,7 +25,7 @@ gem 'devise'
 # Use omniauth-facebook for Facebook login
 gem 'omniauth-facebook'
 # Use carrierwave for image upload
-gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 # Use simple_form for easier forms
 gem 'simple_form'
 # Use country_select for country in simple_form
@@ -34,6 +34,8 @@ gem 'country_select'
 gem 'geocoder'
 # Use toastr-rails for pretty notifications
 gem 'toastr-rails'
+# Use jquery-ui-rails for date picker
+gem 'jquery-ui-rails'
 
 ######################### CUSTOM GEMS END #########################
 

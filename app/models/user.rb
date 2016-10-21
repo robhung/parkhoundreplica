@@ -1,4 +1,19 @@
 class User < ApplicationRecord
+
+  ######################### References #########################
+
+  has_many :spaces, dependent: :destroy
+  has_many :messages, dependent: :destroy
+  has_many :bookings, dependent: :destroy
+
+  ######################### Validation #########################
+
+  validates :first_name, :last_name, presence: true
+
+  ######################### Carrierwave #########################
+
+  mount_uploader :avatar, AvatarUploader
+
   ######################### Devise #########################
 
   # Include default devise modules. Others available are:
@@ -11,13 +26,17 @@ class User < ApplicationRecord
   ######################### OmniAuth Facebook #########################
 
   def self.from_omniauth(auth)
+
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
-      user.photo = auth.info.image
+      user.avatar = auth.info.image
     end
+
   end
 
   def self.new_with_session(params, session)
@@ -31,18 +50,5 @@ class User < ApplicationRecord
       end
     end
   end
-
-  ######################### Carrierwave #########################
-
-  mount_uploader :photo, PhotoUploader
-
-  ######################### Validation #########################
-
-  validates :first_name, :last_name, presence: true
-
-  ######################### References ######################### 
-
-  has_many :spaces, dependent: :destroy
-  has_many :messages, dependent: :destroy
 
 end

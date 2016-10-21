@@ -1,85 +1,128 @@
-<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+  <div class="panel-body">
 
-<p>
-  <strong>Title:</strong>
-  <%= @space.title %>
-</p>
+<!-- ######################### Main Info ######################### -->
 
-<p>
-  <strong>Description:</strong>
-  <%= @space.description %>
-</p>
+    <div class="row">
+      <div class="col-md-6">
+        <h4><%= @space.title %></h4>
 
-<p>
-  <strong>Street:</strong>
-  <%= @space.street %>
-</p>
+        <p>
+        <%= @space.full_street_address %>
+        </p>
 
-<p>
-  <strong>Suburb:</strong>
-  <%= @space.suburb %>
-</p>
+        <p>
+          <strong>Space Type:</strong>
+          <%= @space.space_type %>
+        </p>
 
-<p>
-  <strong>Suburb:</strong>
-  <%= @space.state %>
-</p>
+        <p>
+          <strong>Access:</strong>
+          <%= @space.type_of_access %>
+        </p>
 
-<p>
-  <strong>Postcode:</strong>
-  <%= @space.postcode %>
-</p>
+        <p>
+          <strong>Max. Height:</strong>
+          <%= @space.maximum_entrance_height %>
+        </p>
 
-<p>
-  <strong>Country:</strong>
-  <%= @space.country %>
-</p>
+        <p>
+          <strong>Max. Vehicle:</strong>
+          <%= @space.largest_vehicle %>
+        </p>
 
-<p>
-  <strong>Latitude:</strong>
-  <%= @space.latitude %>
-</p>
+      </div>
 
-<p>
-  <strong>Longitude:</strong>
-  <%= @space.longitude %>
-</p>
+<!-- ######################### Booking Form ######################### -->
+      <div class="col-md-6">
+        <%= render 'bookings/form' %>
+      </div>
+    </div>
 
-<p>
-  <strong>Bond:</strong>
-  <%= @space.price_bond %>
-</p>
+    <br>
 
-<p>
-  <strong>Price day:</strong>
-  <%= @space.price_day %>
-</p>
+<!-- ######################### Google Map ######################### -->
 
-<p>
-  <strong>Price week:</strong>
-  <%= @space.price_week %>
-</p>
+    <div class="row">
+      <div class="col-md-12">
+        <div id="map"></div>
+          <script>
+             function initMap() {
+               var myLatLng = {lat: <%= @space.latitude %>, lng: <%= @space.longitude %>};
 
-<p>
-  <strong>Price month:</strong>
-  <%= @space.price_month %>
-</p>
+               var map = new google.maps.Map(document.getElementById('map'), {
+                 zoom: 15,
+                 center: myLatLng
+               });
 
-<p>
-  <strong>Available Start time:</strong>
-  <%= @space.available_start_time %>
-</p>
+               var marker = new google.maps.Marker({
+                 position: myLatLng,
+                 map: map,
+                 title: '<%= @space.title %>'
+               });
+             }
+          </script>
 
-<p>
-  <strong>Available End time:</strong>
-  <%= @space.available_end_time %>
-</p>
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAPcmuqClKtHjH2PreV0TrpttzN8kmjtE&callback=initMap"async defer></script>
 
-<p>
-  <strong>Available Days:</strong>
-  <%= @space.available_days %>
-</p>
+      </div>
+    </div>
 
+    <br>
 
-<%= link_to 'Edit', edit_space_path(@space) %> |
-<%= link_to 'Back', spaces_path %>
+<!-- ######################### Image ######################### -->
+    <div class="row">
+      <div class="col-md-12">
+        <p>
+          <strong>Photos:</strong>
+          <% @space.photos.each do |photo| %>
+            <%= image_tag(photo) %>
+          <% end %>
+        </p>
+      </div>
+    </div>
+
+    <br>
+
+<!-- ######################### Description ######################### -->
+
+    <div class="row">
+      <div class="col-md-12">
+        <p>
+          <strong>Description:</strong>
+          <%= @space.description %>
+        </p>
+      </div>
+    </div>
+
+    <br>
+
+    <%= link_to 'Edit', edit_space_path(@space) %> |
+    <%= link_to 'Back', spaces_path %>
+
+<!-- ######################### Nearby Spaces ######################### -->
+
+    <h3>Spaces Nearby</h3>
+
+    <div class="row">
+
+      <% for space in @space.nearbys(10) %>
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-heading preview">
+              <%= image_tag space.photos[0] %>
+            </div>
+            <div class="panel-body">
+              <%= link_to space.title, space %><br>
+              (<%= space.distance.round(2) %> miles away)
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+
+    <br>
+
+  </div>
+</div>

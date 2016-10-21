@@ -4,7 +4,7 @@
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <%= render 'partials/devise_message' %>
-      
+
       <div class="form-group">
         <%= f.email_field :email, autofocus: true, :class => "form-control", :placeholder => "Email" %>
       </div>

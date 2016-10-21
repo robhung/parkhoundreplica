@@ -47,13 +47,13 @@ before_action :configure_account_update_params, only: [:update]
   # Specify what parameters can be passed during sign up
 
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :phone, :birthday, :photo, :provider, :uid])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :phone, :birthday, :avatar, :provider, :uid])
   end
 
   # Specify what parameters can be passed during account update
 
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :phone, :birthday, :photo, :provider, :uid])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :phone, :birthday, :avatar, :provider, :uid])
   end
 
   # The path used after sign up
