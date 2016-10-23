@@ -1,32 +1,48 @@
-<div class="ui segment">
-  <h3>Mailbox</h3>
+<div class="row">
+	<div class="col-md-3">
+		<ul class="sidebar-list">
+			<li class="sidebar-item"><%= link_to "Your Bookings", bookings_path, class: "sidebar-link" %></li>
+			<li class="sidebar-item"><%= link_to "Your Listings", spaces_path, class: "sidebar-link" %></li>
+			<li class="sidebar-item"><%= link_to "Your Profile", edit_user_registration_path, class: "sidebar-link" %></li>
+			<li class="sidebar-item"><%= link_to "Your Inbox", conversations_path, class: "sidebar-link active" %></li>
+		</ul>
+	</div>
+	<div class="col-md-9">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				Inbox
+			</div>
+			<div class="panel-body">
 
-  <div class="ui list">
-    <div class="item">
-      <% @conversations.each do |conversation| %>
-        <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
-          <% if conversation.sender_id == current_user.id %>
-            <% recipient = User.find(conversation.recipient_id) %>
-          <% else %>
-            <% recipient = User.find(conversation.sender_id) %>
-          <% end %>
-          <%= link_to recipient.first_name, conversation_messages_path(conversation)%>
+        <% @conversations.each do |conversation| %>
+					<div class="row">
+						<div class="col-md-4 col-md-offset-1">
+		          <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+		            <% if conversation.sender_id == current_user.id %>
+		              <% recipient = User.find(conversation.recipient_id) %>
+		            <% else %>
+		              <% recipient = User.find(conversation.sender_id) %>
+		            <% end %>
+		            <%= link_to conversation_messages_path(conversation) do %>
+									<%= image_tag recipient.avatar_url, class: "img-circle avatar-medium" %>
+								<% end %>
+		            <h3>
+									<%= link_to recipient.first_name, conversation_messages_path(conversation)%>
+								</h3>
+		          <% end %>
+						</div>
+						<div class="col-md-4 col-md-offset-1">
+							<%= link_to 'Delete', conversation, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+						</div>
+					</div>
+					<hr>
         <% end %>
-      <% end %>
-    </div>
-  </div>
-</div>
 
 
-<div class="ui segment">
-  <h3>All Users</h3>
-  <div class="ui list">
-    <% @users.each do |user| %>
-      <% if user.id != current_user.id %>
-      <div class="item">
-        <%= user.first_name %> <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
-      </div>
-      <% end %>
-    <% end %>
-  </div>
+
+
+
+			</div>
+		</div>
+	</div>
 </div>

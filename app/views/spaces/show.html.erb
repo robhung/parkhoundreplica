@@ -3,39 +3,44 @@
 
 <!-- ######################### Main Info ######################### -->
 
-    <div class="row">
-      <div class="col-md-6">
-        <h4><%= @space.title %></h4>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="panel panel-default">
+            <h4><%= @space.title %></h4>
 
-        <p>
-        <%= @space.full_street_address %>
-        </p>
+            <p>
+            <%= @space.full_street_address %>
+            </p>
 
-        <p>
-          <strong>Space Type:</strong>
-          <%= @space.space_type %>
-        </p>
+            <p>
+              <strong>Space Type:</strong>
+              <%= @space.space_type %>
+            </p>
 
-        <p>
-          <strong>Access:</strong>
-          <%= @space.type_of_access %>
-        </p>
+            <p>
+              <strong>Access:</strong>
+              <%= @space.type_of_access %>
+            </p>
 
-        <p>
-          <strong>Max. Height:</strong>
-          <%= @space.maximum_entrance_height %>
-        </p>
+            <p>
+              <strong>Max. Height:</strong>
+              <%= @space.maximum_entrance_height %>
+            </p>
 
-        <p>
-          <strong>Max. Vehicle:</strong>
-          <%= @space.largest_vehicle %>
-        </p>
-
-      </div>
+            <p>
+              <strong>Max. Vehicle:</strong>
+              <%= @space.largest_vehicle %>
+            </p>
+          </div>
+        </div>
 
 <!-- ######################### Booking Form ######################### -->
-      <div class="col-md-6">
-        <%= render 'bookings/form' %>
+
+        <div class="col-md-6">
+          <%= render 'bookings/form' %>
+        </div>
+
       </div>
     </div>
 
@@ -43,42 +48,47 @@
 
 <!-- ######################### Google Map ######################### -->
 
-    <div class="row">
-      <div class="col-md-12">
-        <div id="map"></div>
-          <script>
-             function initMap() {
-               var myLatLng = {lat: <%= @space.latitude %>, lng: <%= @space.longitude %>};
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div id="map"></div>
+            <script>
+               function initMap() {
+                 var myLatLng = {lat: <%= @space.latitude %>, lng: <%= @space.longitude %>};
 
-               var map = new google.maps.Map(document.getElementById('map'), {
-                 zoom: 15,
-                 center: myLatLng
-               });
+                 var map = new google.maps.Map(document.getElementById('map'), {
+                   zoom: 15,
+                   center: myLatLng
+                 });
 
-               var marker = new google.maps.Marker({
-                 position: myLatLng,
-                 map: map,
-                 title: '<%= @space.title %>'
-               });
-             }
-          </script>
+                 var marker = new google.maps.Marker({
+                   position: myLatLng,
+                   map: map,
+                   title: '<%= @space.title %>'
+                 });
+               }
+            </script>
 
-          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAPcmuqClKtHjH2PreV0TrpttzN8kmjtE&callback=initMap"async defer></script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAPcmuqClKtHjH2PreV0TrpttzN8kmjtE&callback=initMap"async defer></script>
 
+        </div>
       </div>
     </div>
 
     <br>
 
 <!-- ######################### Image ######################### -->
-    <div class="row">
-      <div class="col-md-12">
-        <p>
-          <strong>Photos:</strong>
-          <% @space.photos.each do |photo| %>
-            <%= image_tag(photo) %>
-          <% end %>
-        </p>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <p>
+            <strong>Photos:</strong>
+            <% @space.photos.each do |photo| %>
+              <%= image_tag photo if @space.photos? %>
+            <% end %>
+          </p>
+        </div>
       </div>
     </div>
 
@@ -86,19 +96,40 @@
 
 <!-- ######################### Description ######################### -->
 
-    <div class="row">
-      <div class="col-md-12">
-        <p>
-          <strong>Description:</strong>
-          <%= @space.description %>
-        </p>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="panel panel-default">
+            <p>
+              <strong>Description:</strong>
+              <%= @space.description %>
+            </p>
+          </div>
+        </div>
+
+<!-- ######################### Space Owner ######################### -->
+
+        <div class="col-md-6">
+          <div class="container-fluid">
+              <%= link_to user_path(@space.user) do %>
+                <%= image_tag @space.user.avatar, class: "img-thumbnail avatar-large" if @space.user.avatar %>
+              <% end %>
+              <h3><%= @space.user.first_name %></h3>
+              <% if user_signed_in? %>
+                <%= button_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: @space.user.id), class: "btn btn-primary" %>
+              <% else %>
+                <%= link_to 'Message me!', new_user_session_path, class: "btn btn-primary" %>
+              <% end %>
+              <h4>Member Since:</h4> <%= @space.user.created_at %>
+              <h4>Location:</h4> <%= @space.user.location %>
+          </div>
+        </div>
+
+
       </div>
     </div>
 
     <br>
-
-    <%= link_to 'Edit', edit_space_path(@space) %> |
-    <%= link_to 'Back', spaces_path %>
 
 <!-- ######################### Nearby Spaces ######################### -->
 
@@ -110,7 +141,7 @@
         <div class="col-md-4">
           <div class="panel panel-default">
             <div class="panel-heading preview">
-              <%= image_tag space.photos[0] %>
+              <%= image_tag space.photos[0], class: "img-responsive" %>
             </div>
             <div class="panel-body">
               <%= link_to space.title, space %><br>

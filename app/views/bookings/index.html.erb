@@ -1,0 +1,56 @@
+<div class="row">
+	<div class="col-md-3">
+		<ul class="sidebar-list">
+			<li class="sidebar-item"><%= link_to "Your Bookings", bookings_path, class: "sidebar-link active" %></li>
+			<li class="sidebar-item"><%= link_to "Your Listings", spaces_path, class: "sidebar-link" %></li>
+			<li class="sidebar-item"><%= link_to "Your Profile", edit_user_registration_path, class: "sidebar-link" %></li>
+			<li class="sidebar-item"><%= link_to "Your Inbox", conversations_path, class: "sidebar-link" %></li>
+		</ul>
+	</div>
+	<div class="col-md-9">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				Bookings
+			</div>
+			<div class="panel-body">
+
+				<% @bookings.each do |booked| %>
+					<div class="row">
+
+						<div class="col-md-2">
+							<%= booked.start_date.strftime('%v') %>
+						</div>
+
+						<div class="col-md-2">
+							<%= link_to space_path(booked.space) do %>
+								<%= image_tag booked.space.photos[0], class: "img-responsive" %>
+							<% end %>
+						</div>
+
+						<div class="col-md-2">
+							<%= link_to booked.space.title, space_path(booked.space) %>
+						</div>
+
+						<div class="col-md-2">
+							<%= link_to user_path(booked.space.user) do %>
+								<%= image_tag booked.space.user.avatar_url, class: "img-circle avatar-medium" %>
+								<%= booked.space.user.first_name %>
+							<% end %>
+						</div>
+
+						<div class="col-md-2 right">
+							<h4>$<%= booked.total %></h4>
+						</div>
+
+						<div class="col-md-2">
+							<%= link_to 'Cancel', space_booking_path(booked.space, booked), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+						</div>
+
+					</div>
+					<hr>
+				<% end %>
+
+			</div>
+		</div>
+	</div>
+</div>

@@ -38,7 +38,7 @@ before_action :configure_account_update_params, only: [:update]
 
   protected
 
-  # Allow user details to be updated without password
+  # Allow user details to be updated without password (incase you login with Facebook and don't have a password)
 
   def update_resource(resource, params)
     resource.update_without_password(params)
@@ -47,21 +47,21 @@ before_action :configure_account_update_params, only: [:update]
   # Specify what parameters can be passed during sign up
 
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :phone, :birthday, :avatar, :provider, :uid])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :phone, :location, :birthday, :avatar, :provider, :uid])
   end
 
   # Specify what parameters can be passed during account update
 
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :phone, :birthday, :avatar, :provider, :uid])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :phone, :location, :birthday, :avatar, :provider, :uid])
   end
 
   # The path used after sign up
 
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  #     edit_user_registration_path
-  # end
+  def after_sign_up_path_for(resource)
+    super(resource)
+      edit_user_registration_path
+  end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)

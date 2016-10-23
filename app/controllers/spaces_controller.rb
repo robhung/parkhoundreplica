@@ -4,6 +4,14 @@ class SpacesController < ApplicationController
   # GET /spaces
   # GET /spaces.json
   def index
+    @spaces = current_user.spaces
+  end
+
+  def your_listings
+    @spaces = current_user.spaces
+  end
+
+  def search
     if params[:search] && params[:radius]
       @spaces = Space.near(params[:search], params[:radius], :units => :km)
     else
@@ -14,11 +22,16 @@ class SpacesController < ApplicationController
   # GET /spaces/1
   # GET /spaces/1.json
   def show
+    @users = User.all
   end
 
   # GET /spaces/new
   def new
-    @space = Space.new
+    if user_signed_in?
+      @space = Space.new
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   # GET /spaces/1/edit
@@ -36,7 +49,7 @@ class SpacesController < ApplicationController
         format.html { redirect_to @space, notice: 'Space was successfully created.' }
         format.json { render :show, status: :created, location: @space }
       else
-        format.html { render :new }
+        format.html { render :new, alert: "Please provide all information for this room." }
         format.json { render json: @space.errors, status: :unprocessable_entity }
       end
     end
@@ -50,7 +63,7 @@ class SpacesController < ApplicationController
         format.html { redirect_to @space, notice: 'Space was successfully updated.' }
         format.json { render :show, status: :ok, location: @space }
       else
-        format.html { render :edit }
+        format.html { render :edit, flash[:alert] = "Please provide all information for this room." }
         format.json { render json: @space.errors, status: :unprocessable_entity }
       end
     end

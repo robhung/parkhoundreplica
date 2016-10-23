@@ -20,6 +20,7 @@
 
 .container-fluid-home {
   padding: 60px 50px;
+  width: 100%;
 }
 
 .bg-light-grey {
@@ -133,4 +134,32 @@
   font-size: 20px;
   padding: 10px;
   margin-bottom: 10px;
+}
+
+.sidebar-list {
+  padding-left: 0;
+  list-style: none;
+}
+
+.sidebar-item {
+  padding: 10px 0;
+  font-size: 16px;
+  color: #82888a;
+  border-bottom: 1px solid #CCC;
+}
+
+.sidebar-link {
+  color: #82888a;
+  text-decoration: none;
+}
+
+.sidebar-link:hover, .sidebar-link:focus {
+  color: #cacccd;
+  text-decoration: none;
+}
+
+.active.sidebar-link {
+  color: #565a5c;
+  font-weight: bold;
+  text-decoration: none;
 }

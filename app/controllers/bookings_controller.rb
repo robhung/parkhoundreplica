@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
 	before_action :authenticate_user!
+	before_action :set_booking, only: [:destroy]
 
 	def preload
 		space = Space.find(params[:space_id])
@@ -26,7 +27,25 @@ class BookingsController < ApplicationController
 		redirect_to @booking.space, notice: "Your booking has been created!"
 	end
 
+	def index
+		@bookings = current_user.bookings
+	end
+
+	def destroy
+		@booking.destroy
+		respond_to do |format|
+			format.html { redirect_to bookings_url, notice: 'Booking was successfully destroyed.' }
+			format.json { head :no_content }
+		end
+	end
+
 	private
+
+		# Use callbacks to share common setup or constraints between actions.
+		def set_booking
+			@booking = Booking.find(params[:id])
+		end
+
 		def is_conflict(start_date, end_date)
 			space = Space.find(params[:space_id])
 

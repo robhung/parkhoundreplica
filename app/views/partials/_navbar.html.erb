@@ -22,12 +22,12 @@
 
 <!--- ######################### Search Bar ######################### --->
 
-      <!-- <form class="navbar-form navbar-left">
-        <div class="form-group">
+      <form class="navbar-form navbar-left">
+        <!-- <div class="form-group">
           <input type="text" class="form-control" placeholder="Where do you need parking?">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form> -->
+        </div> -->
+        <%= link_to 'Search for Parking Spaces', search_path, class: "btn btn-primary" %>
+      </form>
 
 <!--- ######################### Links - Help ######################### --->
 
@@ -52,29 +52,25 @@
 
         <li><%= link_to('Lease My Space', new_space_path) %></li>
 
-<!--- ######################### Links - Conversation ######################### --->
-
-        <% if user_signed_in? %>
-          <li><%= link_to('Inbox', conversations_path) %></li>
-
 <!--- ######################### Links - User ######################### --->
 
+        <% if user_signed_in? %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              <% if current_user.avatar_url %>
-                <%= image_tag current_user.avatar, class: "img-circle avatar-small" %>&#160;&#160;&#160;
-              <% end %>
+                <%= image_tag current_user.avatar, class: "img-circle avatar-small" if current_user.avatar_url%>&#160;&#160;&#160;
               <%= current_user.first_name %>
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
               <li><a href="#">Dashboard</a></li>
               <li role="separator" class="divider"></li>
-              <li><a href="#">Bookings</a></li>
+              <li><%= link_to('Bookings', bookings_path) %></li>
               <li role="separator" class="divider"></li>
-              <li><a href="#">Listings</a></li>
+              <li><%= link_to('Listings', spaces_path) %></li>
               <li role="separator" class="divider"></li>
               <li><%= link_to('Profile', edit_user_registration_path) %></li>
+              <li role="separator" class="divider"></li>
+              <li><%= link_to('Inbox', conversations_path) %></li>
               <li role="separator" class="divider"></li>
               <li><a href="#">Vehicles</a></li>
               <li role="separator" class="divider"></li>

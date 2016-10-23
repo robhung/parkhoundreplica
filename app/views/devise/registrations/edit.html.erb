@@ -1,62 +1,88 @@
 <div class="row">
-  <div class="col-md-6 col-md-offset-3 text-center">
-    <h2>Welcome to Parkhound!</h2>
+	<div class="col-md-3">
+		<ul class="sidebar-list">
+			<li class="sidebar-item"><%= link_to "Your Bookings", bookings_path, class: "sidebar-link" %></li>
+			<li class="sidebar-item"><%= link_to "Your Listings", spaces_path, class: "sidebar-link" %></li>
+			<li class="sidebar-item"><%= link_to "Your Profile", edit_user_registration_path, class: "sidebar-link active" %></li>
+			<li class="sidebar-item"><%= link_to "Your Inbox", conversations_path, class: "sidebar-link" %></li>
+		</ul>
+	</div>
+	<div class="col-md-9">
+		<div class="panel panel-default">
+			<div class="panel-heading text-center">
+				<h2>Welcome to Parkhound!</h2>
+			</div>
+			<div class="panel-body text-center">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
 
-    <h3>Please update any empty fields.</h3>
+            <h3>Profile Details</h3>
 
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-      <%= render 'partials/devise_message' %>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+              <%= render 'partials/devise_message' %>
 
-      <div class="form-group">
-        <%= f.email_field :email, autofocus: true, :class => "form-control", :placeholder => "Email" %>
-      </div>
+              <div class="form-group">
+                <%= f.email_field :email, autofocus: true, :class => "form-control", :placeholder => "Email" %>
+              </div>
 
-      <div class="form-group">
-        <%= f.text_field :first_name, :class => "form-control", :placeholder => "First Name" %>
-      </div>
+              <div class="form-group">
+                <%= f.text_field :first_name, :class => "form-control", :placeholder => "First Name" %>
+              </div>
 
-      <div class="form-group">
-        <%= f.text_field :last_name, :class => "form-control", :placeholder => "Last Name" %>
-      </div>
+              <div class="form-group">
+                <%= f.text_field :last_name, :class => "form-control", :placeholder => "Last Name" %>
+              </div>
 
-      <div class="form-group">
-        <%= f.label :avatar %>
-        <% if current_user.avatar_url %>
-          <%= image_tag resource.avatar, class: "img-circle avatar-large" %>
-        <% end %>
-        <%= f.file_field :avatar, as: :file %>
-      </div>
+              <div class="form-group">
+                <%= f.label :avatar %>
+                  <%= image_tag resource.avatar, class: "img-circle avatar-large" if current_user.avatar_url %>
+                <%= f.file_field :avatar, as: :file %>
+              </div>
 
-      <div class="form-group">
-        <%= f.text_field :phone, :class => "form-control", :placeholder => "Phone" %>
-      </div>
+              <div class="form-group">
+                <%= f.text_field :phone, :class => "form-control", :placeholder => "Phone" %>
+              </div>
 
-      <div class="form-group">
-        <%= f.label :birthday %><br />
-        <%= f.date_select :birthday, :start_year => 1920 %>
-      </div>
+              <div class="form-group">
+                <%= f.text_field :location, :class => "form-control", :placeholder => "Location" %>
+              </div>
 
-      <div class="form-group">
-        <%= f.text_field :uid, :class => "form-control", :placeholder => "Facebook ID" %>
-      </div>
+              <div class="form-group">
+                <%= f.label :birthday %><br />
+                <%= f.date_select :birthday, :start_year => 1920 %>
+              </div>
 
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-      <% end %>
+              <div class="form-group">
+                <%= f.text_field :uid, :class => "form-control", :placeholder => "Facebook ID (If you want to login using Facebook)" %>
+              </div>
 
-      <div class="actions">
-        <%= f.submit "Update", class: "btn btn-primary" %>
-      </div>
-    <% end %>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <% end %>
 
-    <h3>Change Password?</h3>
+              <h3>Change Password?</h3>
 
-    <p><%#= link_to "Change Password", class: "btn btn-primary" %></p>
+              <div class="form-group">
+                <%= f.password_field :password, autocomplete: "off", :class => "form-control", :placeholder => "Password (leave blank if you don't want to change it)" %>
+              </div>
 
-    <h3>Accidentally registered?</h3>
+              <div class="form-group">
+                <%= f.password_field :password_confirmation, autocomplete: "off", :class => "form-control", :placeholder => "Password Confirmation"  %>
+              </div>
 
-    <p><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %></p>
+              <div class="actions">
+                <%= f.submit "Update", class: "btn btn-primary" %>
+              </div>
+            <% end %>
 
-    <%= link_to "Back", :back, class: "btn btn-primary"  %>
-  </div>
+            <h3>Accidentally Registered?</h3>
+
+            <p><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %></p>
+
+            <%= link_to "Back", :back, class: "btn btn-primary"  %>
+          </div>
+        </div>
+			</div>
+		</div>
+	</div>
 </div>
