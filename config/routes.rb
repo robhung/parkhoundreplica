@@ -6,7 +6,6 @@ Rails.application.routes.draw do
               :controllers => { :registrations => 'users/registrations', :omniauth_callbacks => 'users/omniauth_callbacks'}
 
   resources :users, only: [:show]
-  resources :spaces
 
   resources :conversations, only: [:create, :destroy]
 
@@ -14,13 +13,19 @@ Rails.application.routes.draw do
     resources :messages
   end
 
+  get '/search' => 'spaces#search'
+
+  resources :spaces
+
   resources :spaces do
     resources :bookings, only: [:create, :destroy]
   end
 
+  get '/bookings' => 'bookings#index'
+  get '/guest_bookings' => 'bookings#show'
   get '/preload' => 'bookings#preload'
   get '/preview' => 'bookings#preview'
-  get '/search' => 'spaces#search'
-  get '/bookings' => 'bookings#index'
+
+  resources :charges
 
 end

@@ -36,6 +36,8 @@ gem 'geocoder'
 gem 'toastr-rails'
 # Use jquery-ui-rails for date picker
 gem 'jquery-ui-rails'
+# Use stripe for payment gateway
+gem 'stripe'
 
 ######################### CUSTOM GEMS END #########################
 

@@ -21,7 +21,7 @@ Devise.setup do |config|
   # config.parent_mailer = 'ActionMailer::Base'
 
   # ==> Omniauth Facebook - Declaring Provider
-  config.omniauth :facebook, "212141012531909", "2598a7413397082432034026a97cc525", scope: 'email, public_profile', info_fields: 'email, first_name, last_name'
+  config.omniauth :facebook, Rails.application.secrets.facebook_app_id, Rails.application.secrets.facebook_app_secret, scope: 'email, public_profile', info_fields: 'email, first_name, last_name'
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and

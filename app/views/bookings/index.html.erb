@@ -21,24 +21,23 @@
 							<%= booked.start_date.strftime('%v') %>
 						</div>
 
-						<div class="col-md-2">
+						<div class="col-md-2 col-md-offset-1">
 							<%= link_to space_path(booked.space) do %>
 								<%= image_tag booked.space.photos[0], class: "img-responsive" %>
+								<hr>
+								<%= booked.space.title %>
 							<% end %>
 						</div>
 
-						<div class="col-md-2">
-							<%= link_to booked.space.title, space_path(booked.space) %>
-						</div>
-
-						<div class="col-md-2">
+						<div class="col-md-2 col-md-offset-1">
 							<%= link_to user_path(booked.space.user) do %>
 								<%= image_tag booked.space.user.avatar_url, class: "img-circle avatar-medium" %>
-								<%= booked.space.user.first_name %>
+								<hr>
+								<%= booked.space.user.first_name %> <%= booked.space.user.last_name %>
 							<% end %>
 						</div>
 
-						<div class="col-md-2 right">
+						<div class="col-md-2">
 							<h4>$<%= booked.total %></h4>
 						</div>
 

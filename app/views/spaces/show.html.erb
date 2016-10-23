@@ -120,7 +120,7 @@
               <% else %>
                 <%= link_to 'Message me!', new_user_session_path, class: "btn btn-primary" %>
               <% end %>
-              <h4>Member Since:</h4> <%= @space.user.created_at %>
+              <h4>Member Since:</h4> <%= @space.user.created_at.strftime('%v') %>
               <h4>Location:</h4> <%= @space.user.location %>
           </div>
         </div>

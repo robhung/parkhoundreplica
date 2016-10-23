@@ -1,6 +1,14 @@
 class BookingsController < ApplicationController
 	before_action :authenticate_user!
 	before_action :set_booking, only: [:destroy]
+	before_action :set_space, only: [:show]
+
+	def index
+		@bookings = current_user.bookings
+	end
+
+	def show
+	end
 
 	def preload
 		space = Space.find(params[:space_id])
@@ -24,11 +32,7 @@ class BookingsController < ApplicationController
 	def create
 		@booking = current_user.bookings.create(booking_params)
 
-		redirect_to @booking.space, notice: "Your booking has been created!"
-	end
-
-	def index
-		@bookings = current_user.bookings
+		redirect_to new_charge_path, notice: "Your booking has been created! Please pay first."
 	end
 
 	def destroy
@@ -44,6 +48,10 @@ class BookingsController < ApplicationController
 		# Use callbacks to share common setup or constraints between actions.
 		def set_booking
 			@booking = Booking.find(params[:id])
+		end
+
+		def set_space
+			@space = Space.find(params[:id])
 		end
 
 		def is_conflict(start_date, end_date)

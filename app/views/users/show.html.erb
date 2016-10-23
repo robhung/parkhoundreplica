@@ -16,7 +16,11 @@
 
 		<h2><%= @user.first_name %> <%= @user.last_name %></h2>
 
-		<%= button_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: @user.id) %>
+		<% if user_signed_in? %>
+			<%= button_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: @user.id), class: "btn btn-primary" %>
+		<% else %>
+			<%= link_to 'Message me!', new_user_session_path, class: "btn btn-primary" %>
+		<% end %>
 
 		<div class="description row-space-3">
 			<%#= @user.description %>

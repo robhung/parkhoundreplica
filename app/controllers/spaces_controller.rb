@@ -7,10 +7,6 @@ class SpacesController < ApplicationController
     @spaces = current_user.spaces
   end
 
-  def your_listings
-    @spaces = current_user.spaces
-  end
-
   def search
     if params[:search] && params[:radius]
       @spaces = Space.near(params[:search], params[:radius], :units => :km)
