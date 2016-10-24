@@ -1,18 +1,42 @@
-<%= form_tag charges_path do %>
-  <article>
-    <% if flash[:error].present? %>
-      <div id="error_explanation">
-        <p><%= flash[:error] %></p>
-      </div>
-    <% end %>
-    <label class="amount">
-      <span>Amount: $6.00</span>
-    </label>
-  </article>
+<%= form_tag charges_path, id:"stripeForm" do %>
+  <script src="https://checkout.stripe.com/checkout.js"></script>
+   <article>
+     <% if flash[:error].present? %>
+       <div id="error_explanation">
+         <p><%= flash[:error] %></p>
+       </div>
+     <% end %>
+   </article>
 
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="A month's subscription"
-          data-amount="600"
-          data-locale="auto"></script>
-<% end %>
+   <button id="stripe-button" class="btn btn-primary">Pay $<%= @booking.total %> Now</button>
+      <%= hidden_field_tag 'stripeToken' %>
+      <%= hidden_field_tag 'stripeEmail' %>
+      <%= hidden_field_tag 'stripeAmount'%>
+      <%= hidden_field_tag 'booking_id', @booking.id %>
+
+      <script>
+         var handler = StripeCheckout.configure({
+           currency: "aud",
+           key: "<%= Rails.configuration.stripe[:publishable_key] %>",
+           token: function (token, args) {
+             $("#stripeToken").val(token.id);
+             $("#stripeEmail").val(token.email);
+             $("#stripeAmount").val(<%= @booking.total * 100 %>);
+             $("#stripeForm").submit();
+           }
+         });
+         $('#stripe-button').on('click', function (e) {
+           // Open Checkout with further options
+           handler.open({
+             name: '<%= @booking.space.title %>',
+             description: 'Parkhound Booking',
+             amount: <%= @booking.total * 100 %>,
+             email: '<%=@booking.user.email%>'
+           });
+         e.preventDefault();
+         });
+         $(window).on('popstate', function() {
+           handler.close();
+         });
+       </script>
+ <% end %>

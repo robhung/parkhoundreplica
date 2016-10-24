@@ -1,13 +1,12 @@
 class BookingsController < ApplicationController
 	before_action :authenticate_user!
-	before_action :set_booking, only: [:destroy]
-	before_action :set_space, only: [:show]
 
 	def index
 		@bookings = current_user.bookings
 	end
 
 	def show
+		@space = Space.find(params[:space_id])
 	end
 
 	def preload
@@ -32,10 +31,12 @@ class BookingsController < ApplicationController
 	def create
 		@booking = current_user.bookings.create(booking_params)
 
-		redirect_to new_charge_path, notice: "Your booking has been created! Please pay first."
+		redirect_to bookings_path, notice: "Your booking has been created! Please review and pay when ready."
 	end
 
 	def destroy
+		@booking = Booking.find(params[:id])
+
 		@booking.destroy
 		respond_to do |format|
 			format.html { redirect_to bookings_url, notice: 'Booking was successfully destroyed.' }
@@ -46,13 +47,6 @@ class BookingsController < ApplicationController
 	private
 
 		# Use callbacks to share common setup or constraints between actions.
-		def set_booking
-			@booking = Booking.find(params[:id])
-		end
-
-		def set_space
-			@space = Space.find(params[:id])
-		end
 
 		def is_conflict(start_date, end_date)
 			space = Space.find(params[:space_id])

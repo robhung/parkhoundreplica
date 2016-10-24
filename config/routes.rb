@@ -18,11 +18,13 @@ Rails.application.routes.draw do
   resources :spaces
 
   resources :spaces do
-    resources :bookings, only: [:create, :destroy]
+    resources :bookings, only: [:create]
   end
 
-  get '/bookings' => 'bookings#index'
+  resources :bookings, only: [:index, :destroy]
+
   get '/guest_bookings' => 'bookings#show'
+
   get '/preload' => 'bookings#preload'
   get '/preview' => 'bookings#preview'
 

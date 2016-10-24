@@ -12,7 +12,7 @@
 			<div class="panel-body">
 
 				<% @space.bookings.each do |booking| %>
-					<%# if booking.confirmation %>
+
 						<div class="row">
 
 							<div class="col-md-2">
@@ -40,12 +40,16 @@
 							</div>
 
 							<div class="col-md-2">
-								<%#= link_to 'Cancel', space_booking_path(booking.space, booking), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+								<% if booking.confirmation %>
+									<span class="btn btn-primary">Confirmed</span>
+								<% else %>
+									<%= link_to 'Cancel', booking_path(booking), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+								<% end %>
 							</div>
 
 						</div>
 					<hr>
-					<%# end %>
+
 				<% end %>
 
 			</div>
