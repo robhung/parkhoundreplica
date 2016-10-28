@@ -1,6 +1,6 @@
 <h1>Receipt</h1>
 
 <p>
-  Thank you <%=@booking.user.first_name%> <%=@booking.user.last_name%> for your payment of $<%=@booking.total%> to <%=@booking.space.user %>.
-  Contact <%=@booking.space.user.first_name %> <%=@booking.space.user.last_name %> for any further enquiries.
+  Thank you <%= @booking.user.first_name%> <%= @booking.user.last_name %> for your payment of $<%=@booking.total %> to <%=@booking.space.user.first_name %> <%= @booking.space.user.last_name %>.
+  Please quote your booking reference number (#<%= @booking.id>) and contact <%= @booking.space.user.first_name %> <%= @booking.space.user.last_name %> for any further enquiries.
 </p>
