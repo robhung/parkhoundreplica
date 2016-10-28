@@ -21,7 +21,9 @@ Devise.setup do |config|
   # config.parent_mailer = 'ActionMailer::Base'
 
   # ==> Omniauth Facebook - Declaring Provider
-  config.omniauth :facebook, Rails.application.secrets.facebook_app_id, Rails.application.secrets.facebook_app_secret, scope: 'email, public_profile', info_fields: 'email, first_name, last_name'
+  config.omniauth :facebook, ENV['APP_ID'], ENV['APP_SECRET'], scope: 'email',
+                  info_fields: 'email, first_name, last_name',
+                  :client_options => {:ssl => {:ca_path => '/usr/lib/ssl/certs/ca-certificates.crt'}}
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
