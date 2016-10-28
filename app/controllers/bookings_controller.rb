@@ -31,7 +31,14 @@ class BookingsController < ApplicationController
 	def create
 		@booking = current_user.bookings.create(booking_params)
 
-		redirect_to bookings_path, notice: "Your booking has been created! Please review and pay when ready."
+		if @booking.save
+			BookingMailer.received(@booking).deliver_now
+			BookingMailer.response(@booking).deliver_now
+
+			redirect_to bookings_path, notice: "Your booking has been created! Please review and pay when ready."
+		end
+
+
 	end
 
 	def destroy

@@ -16,7 +16,11 @@
 						<div class="row">
 
 							<div class="col-md-2">
-								<%= booking.start_date.strftime('%v') %>
+								<h4>Booked: </h4><%= booking.created_at.strftime('%v') %>
+								<hr>
+								<h4>Start: </h4><%= booking.start_date.strftime('%v') %>
+
+								<h4>End: </h4><%= booking.end_date.strftime('%v') %>
 							</div>
 
 							<div class="col-md-2 col-md-offset-1">
@@ -36,7 +40,7 @@
 							</div>
 
 							<div class="col-md-2">
-								<h4>$<%= booking.total %></h4>
+								<h4>Total $<%= booking.total %></h4>
 							</div>
 
 							<div class="col-md-2">

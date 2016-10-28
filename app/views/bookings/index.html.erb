@@ -14,40 +14,43 @@
 			</div>
 			<div class="panel-body">
 
-				<% @bookings.each do |booked| %>
+				<% @bookings.each do |booking| %>
 					<div class="row">
 
 						<div class="col-md-2">
-							<%= booked.start_date.strftime('%v') %>
+							<h4>Booked: </h4><%= booking.created_at.strftime('%v') %>
+							<hr>
+							<h4>Start: </h4><%= booking.start_date.strftime('%v') %>
+							<h4>End: </h4><%= booking.end_date.strftime('%v') %>
 						</div>
 
 						<div class="col-md-2 col-md-offset-1">
-							<%= link_to space_path(booked.space) do %>
-								<%= image_tag booked.space.photos[0], class: "img-responsive" %>
+							<%= link_to space_path(booking.space) do %>
+								<%= image_tag booking.space.photos[0], class: "img-responsive" %>
 								<hr>
-								<%= booked.space.title %>
+								<%= booking.space.title %>
 							<% end %>
 						</div>
 
 						<div class="col-md-2 col-md-offset-1">
-							<%= link_to user_path(booked.space.user) do %>
-								<%= image_tag booked.space.user.avatar_url, class: "img-circle avatar-medium" %>
+							<%= link_to user_path(booking.space.user) do %>
+								<%= image_tag booking.space.user.avatar_url, class: "img-circle avatar-medium" %>
 								<hr>
-								<%= booked.space.user.first_name %> <%= booked.space.user.last_name %>
+								<%= booking.space.user.first_name %> <%= booking.space.user.last_name %>
 							<% end %>
 						</div>
 
 						<div class="col-md-2">
-							<h4>$<%= booked.total %></h4>
+							<h4>Total $<%= booking.total %></h4>
 						</div>
 
 						<div class="col-md-2">
-							<% if booked.confirmation %>
+							<% if booking.confirmation %>
 								<span class="btn btn-primary">Confirmed</span>
 							<% else %>
-								<%= link_to 'Pay Now', new_charge_path(booking_id: booked.id), class: "btn btn-primary" %>
+								<%= link_to 'Pay Now', new_charge_path(booking_id: booking.id), class: "btn btn-primary" %>
 								<hr>
-								<%= link_to 'Cancel', booking_path(booked), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+								<%= link_to 'Cancel', booking_path(booking), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
 							<% end %>
 						</div>
 

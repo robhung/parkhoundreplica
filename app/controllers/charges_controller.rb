@@ -23,7 +23,7 @@ class ChargesController < ApplicationController
     )
 
     if charge[:paid]
-      #BookingMailer.receipt(@booking).deliver_now
+      BookingMailer.receipt(@booking).deliver_now
       @booking.update_attribute(:confirmation, true)
     end
 
@@ -42,7 +42,7 @@ class ChargesController < ApplicationController
     def require_same_id
       if current_user.id != @booking.user.id
         flash[:alert]= "You are not allowed to access this page."
-        
+
         redirect_to root_path
       end
     end

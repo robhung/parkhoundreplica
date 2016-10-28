@@ -1,0 +1,9 @@
+<h1>Booking Request</h1>
+
+<p>
+  <%= @greeting %>, <%=@booking.space.user.first_name %> <%=@booking.space.user.last_name %>
+</p>
+<p>
+  You received a booking from <%= @booking.user.first_name %> <%= @booking.user.last_name %>. Go to
+  <%= link_to "here", "#"%> to your bookings.
+</p>

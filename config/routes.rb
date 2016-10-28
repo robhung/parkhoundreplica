@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
+  resources :dashboard
+
   resources :conversations, only: [:create, :destroy]
 
   resources :conversations do

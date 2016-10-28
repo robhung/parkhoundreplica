@@ -1,1 +1,3 @@
-<h2>Thanks, you paid <strong>$<%= @booking.total %></strong>!</h2>
+<h2>Thank you for your payment of $<%= @booking.total %>. It will be processed shortly.</h2>
+
+<%= link_to "Back to your desktop", booking_path, class: "btn btn-primary" %>
