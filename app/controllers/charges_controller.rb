@@ -23,7 +23,6 @@ class ChargesController < ApplicationController
     )
 
     if charge[:paid]
-      #BookingMailer.receipt(@booking).deliver_now
       @booking.update_attribute(:confirmation, true)
     end
 

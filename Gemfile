@@ -26,6 +26,8 @@ gem 'devise'
 gem 'omniauth-facebook'
 # Use carrierwave for image upload
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+# Use cloudinary for image hosting
+gem 'cloudinary'
 # Use simple_form for easier forms
 gem 'simple_form'
 # Use country_select for country in simple_form
