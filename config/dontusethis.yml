@@ -1,19 +1,19 @@
 ---
 development:
-  cloud_name: robhung
+  cloud_name: "robhung"
   api_key: '862228873652127'
-  api_secret: NVC_uGlfeG4fk0n5z3eVRj1YkUs
+  api_secret: "NVC_uGlfeG4fk0n5z3eVRj1YkUs"
   enhance_image_tag: true
   static_image_support: false
 production:
-  cloud_name: robhung
+  cloud_name: "robhung"
   api_key: '862228873652127'
-  api_secret: NVC_uGlfeG4fk0n5z3eVRj1YkUs
+  api_secret: "NVC_uGlfeG4fk0n5z3eVRj1YkUs"
   enhance_image_tag: true
   static_image_support: true
 test:
-  cloud_name: robhung
+  cloud_name: "robhung"
   api_key: '862228873652127'
-  api_secret: NVC_uGlfeG4fk0n5z3eVRj1YkUs
+  api_secret: "NVC_uGlfeG4fk0n5z3eVRj1YkUs"
   enhance_image_tag: true
   static_image_support: false
