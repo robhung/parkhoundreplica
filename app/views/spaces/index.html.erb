@@ -18,7 +18,7 @@
 					<div class="row">
 						<div class="col-md-2">
 							<%= link_to space_path(space) do %>
-						  	<%= image_tag space.photos[0], class: "img-responsive" if space.photos? %>
+						  	<%= image_tag space.photos[0].url, class: "img-responsive" if space.photos? %>
 							<% end %>
 						</div>
 						<div class="col-md-7">

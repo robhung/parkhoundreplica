@@ -85,7 +85,7 @@
           <p>
             <strong>Photos:</strong>
             <% @space.photos.each do |photo| %>
-              <%= image_tag photo if @space.photos? %>
+              <%= image_tag photo.url if @space.photos? %>
             <% end %>
           </p>
         </div>
@@ -112,7 +112,7 @@
         <div class="col-md-6">
           <div class="container-fluid">
               <%= link_to user_path(@space.user) do %>
-                <%= image_tag @space.user.avatar, class: "img-thumbnail avatar-large" if @space.user.avatar %>
+                <%= image_tag @space.user.avatar.url, class: "img-thumbnail avatar-large" if @space.user.avatar %>
               <% end %>
               <h3><%= @space.user.first_name %></h3>
               <% if user_signed_in? %>
@@ -141,7 +141,7 @@
         <div class="col-md-4">
           <div class="panel panel-default">
             <div class="panel-heading preview">
-              <%= image_tag space.photos[0], class: "img-responsive" %>
+              <%= image_tag space.photos[0].url, class: "img-responsive" %>
             </div>
             <div class="panel-body">
               <%= link_to space.title, space %><br>

@@ -24,7 +24,7 @@
 		              <% recipient = User.find(conversation.sender_id) %>
 		            <% end %>
 		            <%= link_to conversation_messages_path(conversation) do %>
-									<%= image_tag recipient.avatar_url, class: "img-circle avatar-medium" %>
+									<%= image_tag recipient.avatar.url, class: "img-circle avatar-medium" %>
 								<% end %>
 		            <h3>
 									<%= link_to recipient.first_name, conversation_messages_path(conversation)%>
