@@ -44,7 +44,7 @@ Discovery -> Sign up -> Create parking space listing -> Provide booking users wi
 ## Deliverables
 - Wireframes: TBC
 
-- User Stories: TBC
+- Trello / User Stories: https://trello.com/b/GSy8QxcF
 
 - Entity Relationship Diagram: TBC
 
