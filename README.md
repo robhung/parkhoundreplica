@@ -34,11 +34,11 @@ With so much real estate going un-used when you're at work or over the weekend, 
 
 ## User Journey
 
-### Student
+### Parking User
 Discovery -> Sign up -> Search for parking -> Book -> Pay
 -> Park
 
-### Tutor
+### Space Owner
 Discovery -> Sign up -> Create parking space listing -> Provide booking users with directions and instructions for parking space -> Accept payment -> Keep in touch with booking users
 
 ## Deliverables
