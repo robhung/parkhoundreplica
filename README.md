@@ -42,11 +42,11 @@ Discovery -> Sign up -> Search for parking -> Book -> Pay
 Discovery -> Sign up -> Create parking space listing -> Provide booking users with directions and instructions for parking space -> Accept payment -> Keep in touch with booking users
 
 ## Deliverables
-- Wireframes:
+- Wireframes: TBC
 
-- User Stories:
+- User Stories: TBC
 
-- Entity Relationship Diagram
+- Entity Relationship Diagram: TBC
 
 
 ## Project Estimation
