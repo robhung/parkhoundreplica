@@ -1,6 +1,6 @@
 # Coder Factory Academy - Semester 2 - Project 2
 Deployed on Heroku:
-https://parkhound.herokuapp.com/
+https://parkhoundreplica.herokuapp.com/
 
 ## Application Setup
 - [x] Ruby 2.3.1 and Rails 5.0
@@ -43,15 +43,14 @@ Discovery -> Sign up -> Create parking space listing -> Provide booking users wi
 
 ## Deliverables
 - Wireframes:
-* wireframes.pdf
+
 - User Stories:
-* Trello link: https://trello.com/b/GC0NBngH/mytut
+
 - Entity Relationship Diagram
-  * Initial ERD: ?
-  * Made by rails-erd: ?
+
 
 ## Project Estimation
-?
+
 
 # Tools and Methodologies
 * Use of Trello for planning and progression review
@@ -62,7 +61,7 @@ Discovery -> Sign up -> Create parking space listing -> Provide booking users wi
 # Rails Application
 - [x] Postgresql DB
 - [x] Devise Authentication
-- [x] Omniauth-facebook
+- [x] Omniauth-Facebook
 - [x] Conversation & Messages
 - [x] Search Spaces
 - [x] CarrierWave Image Uploading
