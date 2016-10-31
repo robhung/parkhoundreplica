@@ -40,6 +40,8 @@ gem 'toastr-rails'
 gem 'jquery-ui-rails'
 # Use stripe for payment gateway
 gem 'stripe'
+# Use rails-erd for ERD generation
+gem 'rails-erd'
 
 ######################### CUSTOM GEMS END #########################
 
