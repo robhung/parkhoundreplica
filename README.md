@@ -55,8 +55,8 @@ Discovery -> Sign up -> Create parking space listing -> Provide booking users wi
 
 # Tools and Methodologies
 * Use of Trello for planning and progression review
-* Use of dbdesigner for ERD creation
-* User Slack to discuss with my peers
+* Use of rails-erd for ERD creation
+* Use of Slack to discuss with my peers
 * Github: rph28/parkhound
 
 # Rails Application
