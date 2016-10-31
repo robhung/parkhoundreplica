@@ -46,7 +46,7 @@ Discovery -> Sign up -> Create parking space listing -> Provide booking users wi
 
 - Trello / User Stories: https://trello.com/b/GSy8QxcF
 
-- Entity Relationship Diagram: TBC
+- Entity Relationship Diagram (Rails-ERD): https://github.com/rph28/parkhoundreplica/blob/master/erd.pdf
 
 
 ## Project Estimation
