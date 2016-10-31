@@ -50,6 +50,7 @@ Discovery -> Sign up -> Create parking space listing -> Provide booking users wi
 
 
 ## Project Estimation
+- Spreadsheet: https://docs.google.com/spreadsheets/d/1BrVlBf__eCVwZ7s1LNH6TgIK6zpPCZZTDoAUlknHwBE/edit?usp=sharing
 
 
 # Tools and Methodologies
